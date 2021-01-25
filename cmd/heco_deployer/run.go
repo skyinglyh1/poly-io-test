@@ -100,6 +100,13 @@ func DeployHecoSmartContract() {
 		}
 		lockproxyAddrHex = lockProxyAddr.Hex()
 	}
+	fmt.Println("=============================Heco info=============================")
+	fmt.Println("heco eccd address         :", eccdAddr.Hex())
+	fmt.Println("heco eccm address         :", eccmAddr.Hex())
+	fmt.Println("heco eccmp address        :", eccmpAddr.Hex())
+	fmt.Println("heco lock proxy address   :", lockProxyAddr.Hex())
+	fmt.Println("===================================================================")
+	return
 
 	hrc20AddrHex := config.DefConfig.HecoHrc20
 	hrc20Addr := common2.HexToAddress(hrc20AddrHex)

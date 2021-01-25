@@ -1181,6 +1181,7 @@ func RegisterBSC(poly *poly_go_sdk.PolySdk, acc *poly_go_sdk.Account) bool {
 func RegisterHeco(poly *poly_go_sdk.PolySdk, acc *poly_go_sdk.Account) bool {
 	tool := eth.NewEthTools(config.DefConfig.HecoURL)
 	chainID, err := tool.GetChainID()
+	chainID = big.NewInt(128)
 	if err != nil {
 		panic(err)
 	}
@@ -1192,7 +1193,8 @@ func RegisterHeco(poly *poly_go_sdk.PolySdk, acc *poly_go_sdk.Account) bool {
 	}
 
 	extraBytes, _ := json.Marshal(extra)
-
+	log.Errorf("Heco Extra: %+v", extra)
+	log.Errorf("Heco Extra Bytes: %x", extraBytes)
 	eccd, err := hex.DecodeString(strings.Replace(config.DefConfig.HecoEccd, "0x", "", 1))
 	if err != nil {
 		panic(fmt.Errorf("RegisterHeco, failed to decode eccd '%s' : %v", config.DefConfig.HecoEccd, err))
